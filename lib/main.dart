@@ -115,39 +115,39 @@ class Home extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     padding: EdgeInsets.all(21),
-                    child: FittedBox(
-                      child: Row(
-                        children: <Widget>[
-                          Material(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                shape: BoxShape.circle,
-                              ),
-                              child: IconButton(
-                                icon: Icon(Icons.add),
-                                onPressed: () {},
-                              ),
+                    child: Row(
+                      children: <Widget>[
+                        Material(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                              icon: Icon(Icons.add),
+                              onPressed: () {},
                             ),
                           ),
-                          SizedBox(
-                            width: 21,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                "Add Token",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "Bitcoin, CashCoin, Monero...",
-                                style: Theme.of(context).textTheme.subhead,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 21,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              "Add Token",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "Bitcoin, CashCoin, Monero...",
+                              style: Theme.of(context).textTheme.subhead,
+                              overflow: TextOverflow.ellipsis,
+                              softWrap: false,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ],
