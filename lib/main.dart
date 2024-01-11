@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_crypto/login.dart';
 
 void main() => runApp(MyApp());
@@ -12,27 +11,27 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Montserrat',
-        buttonColor: Color(0xff68d69d),
         primaryColor: Color(0xff20253d),
-        accentColor: Color(0xffcdd2de),
         textTheme: TextTheme(
-          headline: TextStyle(
+          headlineSmall: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
-          subhead: TextStyle(
+          titleMedium: TextStyle(
             fontSize: 19,
             fontWeight: FontWeight.w200,
             color: Color(0xff8c92a5),
           ),
-          title: TextStyle(
+          titleLarge: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.w100,
             color: Colors.white,
             letterSpacing: 1.3,
           ),
         ),
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(secondary: Color(0xffcdd2de)),
       ),
       home: Login(),
     );
@@ -43,24 +42,24 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         currentIndex: 0,
         selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Theme.of(context).colorScheme.secondary,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text("Home"),
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_balance_wallet),
-            title: Text("Transaction"),
+            label: "Transaction",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            title: Text("Settings"),
+            label: "Settings",
           ),
         ],
       ),
@@ -141,7 +140,7 @@ class Home extends StatelessWidget {
                             ),
                             Text(
                               "Bitcoin, CashCoin, Monero...",
-                              style: Theme.of(context).textTheme.subhead,
+                              style: Theme.of(context).textTheme.titleMedium,
                               overflow: TextOverflow.ellipsis,
                               softWrap: false,
                             ),
@@ -208,14 +207,15 @@ class homePageContent extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text("Total Balance", style: Theme.of(context).textTheme.subhead),
+              Text("Total Balance",
+                  style: Theme.of(context).textTheme.titleMedium),
               SizedBox(height: 11),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "\$525.39",
-                    style: Theme.of(context).textTheme.headline,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   CustomButton(),
                 ],
@@ -224,8 +224,9 @@ class homePageContent extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text("Your Tokens", style: Theme.of(context).textTheme.title),
-                  FlatButton(
+                  Text("Your Tokens",
+                      style: Theme.of(context).textTheme.titleLarge),
+                  TextButton(
                     child: Text(
                       "Make Changes",
                       style: TextStyle(color: Colors.white),
@@ -285,15 +286,14 @@ class TokenCard extends StatelessWidget {
       usdAmount,
       cryptoIconURL;
 
-  TokenCard(
-      {Key key,
-      this.token,
-      this.name,
-      this.cryptoAmount,
-      this.cryptoCurrency,
-      this.usdAmount,
-      this.cryptoIconURL})
-      : super(key: key);
+  const TokenCard(
+      {super.key,
+      required this.token,
+      required this.name,
+      required this.cryptoAmount,
+      required this.cryptoCurrency,
+      required this.usdAmount,
+      required this.cryptoIconURL});
 
   @override
   Widget build(BuildContext context) {
@@ -329,7 +329,7 @@ class TokenCard extends StatelessWidget {
                   ),
                   Text(
                     name,
-                    style: Theme.of(context).textTheme.subhead,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ],
               ),
@@ -348,7 +348,7 @@ class TokenCard extends StatelessWidget {
                   ),
                   Text(
                     "\$$usdAmount",
-                    style: Theme.of(context).textTheme.subhead,
+                    style: Theme.of(context).textTheme.titleMedium,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
                   ),

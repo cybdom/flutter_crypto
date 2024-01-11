@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
             Center(
               child: Text(
                 "Create a password",
-                style: Theme.of(context).textTheme.headline,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
             Column(
@@ -37,10 +37,7 @@ class _LoginState extends State<Login> {
                   hasIcon: true,
                   hint: "Password",
                   label: "New Password (min 8 chars)",
-                  icon: Icon(
-                    Icons.visibility,
-                    color: Colors.white,
-                  ),
+                  icon: Icons.visibility,
                 ),
                 SizedBox(
                   height: 21,
@@ -57,7 +54,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text("Enable Touch ID at login",
-                      style: Theme.of(context).textTheme.title),
+                      style: Theme.of(context).textTheme.titleLarge),
                   CupertinoSwitch(
                     onChanged: (value) {
                       setState(() {
@@ -71,7 +68,7 @@ class _LoginState extends State<Login> {
             ),
             Container(
               width: double.infinity,
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
@@ -82,6 +79,7 @@ class _LoginState extends State<Login> {
                     ),
                   );
                 },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 child: Text(
                   "NEXT",
                   style: TextStyle(color: Colors.white),
@@ -98,14 +96,14 @@ class _LoginState extends State<Login> {
 class CustomInputField extends StatelessWidget {
   final String label, hint;
   final bool hasIcon;
-  final Icon icon;
-  const CustomInputField({
-    Key key,
-    this.label,
-    this.hint,
-    this.hasIcon,
-    this.icon,
-  }) : super(key: key);
+  final IconData? icon;
+
+  const CustomInputField(
+      {super.key,
+      required this.label,
+      required this.hint,
+      required this.hasIcon,
+      this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +112,7 @@ class CustomInputField extends StatelessWidget {
       children: <Widget>[
         Text(
           label,
-          style: Theme.of(context).textTheme.subhead,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         SizedBox(
           height: 5.0,
@@ -139,7 +137,7 @@ class CustomInputField extends StatelessWidget {
               ),
               hasIcon
                   ? IconButton(
-                      icon: icon,
+                      icon: Icon(icon, color: Colors.white),
                       onPressed: () {},
                     )
                   : Container(),
